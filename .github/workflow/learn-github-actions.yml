@@ -2,7 +2,7 @@ name: learn github-acctions
 on: [push]
 jobs:
   name-job:
-    runs-on: unbuntu-latest3
+    runs-on: unbuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
