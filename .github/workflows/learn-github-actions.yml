@@ -9,9 +9,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '14'
-      - run: npm install
-      - run: npm install cypress
-  cypress-run:
-      runs-on: ubuntu-latest
-      steps:              
+      - run: npm install        
       - run: npx cypress run
