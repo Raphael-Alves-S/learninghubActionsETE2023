@@ -23,6 +23,7 @@
   "homepage": "https://github.com/barbaracabral/serverRestAPI#readme",
   "dependencies": {
     "cypress": "^10.11.0",
+    "cypress-multi-reporters": "^1.6.4",
     "unique-names-generator": "^4.7.1"
   }
 }
