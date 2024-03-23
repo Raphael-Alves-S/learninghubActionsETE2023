@@ -1,0 +1,12 @@
+name: learn github-acctions
+on: [push]
+jobs:
+  name-job:
+    runs-on: unbuntu-latest3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      with:
+        node=version: '14'
+      - run: npm install -g bats
+      - run: bats -v
