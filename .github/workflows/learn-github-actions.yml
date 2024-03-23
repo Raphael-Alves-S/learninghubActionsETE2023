@@ -22,10 +22,10 @@ jobs:
         uses: dmitry/cypress-report-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          pathname: /test/cypress/reports/mocha/index.html
+          pathname: reports/
         if: always()  
       - name: Step 3 - Use the Upload Artifact GitHub Action
         uses: actions/upload-artifact@v2
         with: 
           name: assets-for-download
-          path: /test/cypress/reports/mocha/  
+          path: reports/
