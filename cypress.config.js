@@ -13,8 +13,8 @@ module.exports = defineConfig({
     "mochawesomeReporterOptions": {
       "reportDir": "test/cypress/reports/mocha",
       "quiet": true,
-      "overwrite": false,
-      "html": false,
+      "overwrite": true,
+      "html": true,
       "json": true
     }
   }
