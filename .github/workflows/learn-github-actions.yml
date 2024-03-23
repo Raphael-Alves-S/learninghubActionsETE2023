@@ -11,5 +11,17 @@ jobs:
           node-version: '14'
       - run: npm install        
       - run: npx cypress run
-      - name: Generate HTML report
-        run: npm run report:generate        
+      - name: Prepare reports
+        if: always()
+        run: |
+          cd frontend
+          npm i -g mochawesome-merge
+          npm i -g mochawesome-report-generator
+          mochawesome-merge test/cypress/reports/mocha/*.json > ./test/cypress/reports/mocha/index.json
+          marge --charts=true --showPassed=false -o ./test/cypress/reports/mocha/ ./test/cypress/reports/mocha/index.json
+      - name: Cypress report
+        uses: dmitry/cypress-report-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pathname: frontend/test/cypress/reports/mocha/index.json
+        if: always()    
