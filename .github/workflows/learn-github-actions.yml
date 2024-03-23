@@ -16,8 +16,8 @@ jobs:
         run: |
           npm i -g mochawesome-merge
           npm i -g mochawesome-report-generator
-          mochawesome-merge test/cypress/reports/mocha/*.json > ./test/cypress/reports/mocha/index.json
-          marge --charts=true --showPassed=false -o ./test/cypress/reports/mocha/ ./test/cypress/reports/mocha/index.json
+          mochawesome-merge ./reports/*.json > ./reports/index.json
+          marge --charts=true --showPassed=false -o ./reports/ ./reports/index.json
       - name: Cypress report
         uses: dmitry/cypress-report-action@v1
         with:

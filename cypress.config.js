@@ -11,7 +11,7 @@ module.exports = defineConfig({
   "reporterOptions": {
     "reporterEnabled": "mochawesome",
     "mochawesomeReporterOptions": {
-      "reportDir": "reports",
+      "reportDir": "reports/",
       "quiet": true,
       "overwrite": true,
       "html": true,
