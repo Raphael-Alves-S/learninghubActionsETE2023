@@ -9,6 +9,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '14'
-      - run: npm install -g bats
-      - run: npm install -g cypress
+      - run: npm install
+      - run: npm install cypress
       - run: npx cypress run
