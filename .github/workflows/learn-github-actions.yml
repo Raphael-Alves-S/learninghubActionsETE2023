@@ -14,11 +14,4 @@ jobs:
       - name: Merge test results into one
         run: npm run report:merge
       - name: Generate HTML report
-        run: npm run report:generate
-      - name: Deploy report page
-        uses: actions/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
+        run: npm run report:generate        
