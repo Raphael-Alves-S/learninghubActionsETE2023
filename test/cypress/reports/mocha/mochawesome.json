@@ -1,0 +1,202 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 6,
+    "passes": 6,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-03-23T20:31:48.520Z",
+    "end": "2024-03-23T20:31:50.526Z",
+    "duration": 2006,
+    "testsRegistered": 6,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "62794371-fe23-4f0b-8765-63e36a9ce37d",
+      "title": "",
+      "fullFile": "cypress\\e2e\\usuarios.cy.js",
+      "file": "cypress\\e2e\\usuarios.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3b27d08c-6e98-4160-9b52-8cb2b77ad6d7",
+          "title": "Cadastro Simples de Usuário",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Cadastrar Usuário",
+              "fullTitle": "Cadastro Simples de Usuário Cadastrar Usuário",
+              "timedOut": null,
+              "duration": 805,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "email = (0, _utils.createNewEmail)();\nnome = (0, _utils.createNewName)();\ncy.request({\n  method: 'POST',\n  url: '/usuarios',\n  headers: {\n    'Content-Type': 'application/json',\n    'Accept': 'application/json'\n  },\n  body: {\n    nome: nome,\n    email: email,\n    password: 'password123',\n    administrador: 'true'\n  }\n}).should(response => {\n  userID = response.body._id;\n  expect(response.status).to.eq(201);\n  expect(response.body).to.have.property('message', 'Cadastro realizado com sucesso');\n});",
+              "err": {},
+              "uuid": "ea37b6c9-ef68-4935-87aa-4755f1fab7cf",
+              "parentUUID": "3b27d08c-6e98-4160-9b52-8cb2b77ad6d7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Buscar usuário por ID",
+              "fullTitle": "Cadastro Simples de Usuário Buscar usuário por ID",
+              "timedOut": null,
+              "duration": 243,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'GET',\n  url: `/usuarios/${userID}`,\n  headers: {\n    'Accept': 'application/json'\n  }\n}).should(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body).to.have.property('nome', nome);\n  expect(response.body).to.have.property('email', email);\n  expect(response.body).to.have.property('administrador');\n  expect(response.body).to.have.property('_id');\n});",
+              "err": {},
+              "uuid": "39588dde-27c7-45dc-91fe-620c3f539434",
+              "parentUUID": "3b27d08c-6e98-4160-9b52-8cb2b77ad6d7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Atualizar Usuário por ID",
+              "fullTitle": "Cadastro Simples de Usuário Atualizar Usuário por ID",
+              "timedOut": null,
+              "duration": 242,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'PUT',\n  url: `/usuarios/${userID}`,\n  headers: {\n    'Content-Type': 'application/json',\n    'Accept': 'application/json'\n  },\n  body: {\n    nome: nome,\n    email: email,\n    password: 'novaSenha',\n    administrador: 'false'\n  }\n}).should(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body).to.have.property('message', 'Registro alterado com sucesso');\n});",
+              "err": {},
+              "uuid": "36a378ce-6f3d-4e83-9279-be32957aad53",
+              "parentUUID": "3b27d08c-6e98-4160-9b52-8cb2b77ad6d7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Buscar usuário por ID",
+              "fullTitle": "Cadastro Simples de Usuário Buscar usuário por ID",
+              "timedOut": null,
+              "duration": 238,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.log(userID);\ncy.request({\n  method: 'GET',\n  url: `/usuarios/${userID}`,\n  headers: {\n    'Accept': 'application/json'\n  }\n}).should(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body).to.have.property('nome', nome);\n  expect(response.body).to.have.property('email', email);\n  expect(response.body).to.have.property('password', 'novaSenha');\n  expect(response.body).to.have.property('administrador');\n  expect(response.body).to.have.property('_id');\n});",
+              "err": {},
+              "uuid": "f6e9be0e-9406-4c2d-91b4-d89da11a2183",
+              "parentUUID": "3b27d08c-6e98-4160-9b52-8cb2b77ad6d7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Excluir Usuário por ID",
+              "fullTitle": "Cadastro Simples de Usuário Excluir Usuário por ID",
+              "timedOut": null,
+              "duration": 232,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'DELETE',\n  url: `/usuarios/${userID}`,\n  headers: {\n    'Accept': 'application/json'\n  }\n}).should(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body).to.have.property('message', 'Registro excluído com sucesso');\n});",
+              "err": {},
+              "uuid": "5e570746-18ff-4706-a42a-494c6f755619",
+              "parentUUID": "3b27d08c-6e98-4160-9b52-8cb2b77ad6d7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Buscar usuário por ID e verificar que ele foi excluido",
+              "fullTitle": "Cadastro Simples de Usuário Buscar usuário por ID e verificar que ele foi excluido",
+              "timedOut": null,
+              "duration": 220,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'GET',\n  url: `/usuarios/${userID}`,\n  headers: {\n    'Accept': 'application/json'\n  },\n  failOnStatusCode: false\n}).should(response => {\n  expect(response.status).to.eq(400);\n  expect(response.body).to.have.property('message', 'Usuário não encontrado');\n});",
+              "err": {},
+              "uuid": "1a9b3329-b171-41b7-b26a-a425b555d014",
+              "parentUUID": "3b27d08c-6e98-4160-9b52-8cb2b77ad6d7",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ea37b6c9-ef68-4935-87aa-4755f1fab7cf",
+            "39588dde-27c7-45dc-91fe-620c3f539434",
+            "36a378ce-6f3d-4e83-9279-be32957aad53",
+            "f6e9be0e-9406-4c2d-91b4-d89da11a2183",
+            "5e570746-18ff-4706-a42a-494c6f755619",
+            "1a9b3329-b171-41b7-b26a-a425b555d014"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1980,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "test/cypress/reports/mocha",
+        "quiet": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
