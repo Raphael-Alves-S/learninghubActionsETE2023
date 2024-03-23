@@ -1,0 +1,31 @@
+name: learn-github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: [push]
+jobs:
+  install-dependencies:
+    runs-on: ubuntu-latest
+    steps:  
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '14'
+      - run: npm install        
+      - run: npx cypress run
+      - name: Prepare reports
+        if: always()
+        run: |
+          npm i -g mochawesome-merge
+          npm i -g mochawesome-report-generator
+          mochawesome-merge ./reports/*.json > ./reports/index.json
+          marge --charts=true --showPassed=false -o ./reports/ ./reports/index.json
+      - name: Cypress report
+        uses: dmitry/cypress-report-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pathname: reports/index.json
+        if: always()  
+      - name: Step 3 - Use the Upload Artifact GitHub Action
+        uses: actions/upload-artifact@v2
+        with: 
+          name: assets-for-download
+          path: reports/
