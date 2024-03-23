@@ -24,6 +24,8 @@
   "dependencies": {
     "cypress": "^10.11.0",
     "cypress-multi-reporters": "^1.6.4",
+    "mochawesome-merge": "^4.3.0",
+    "mochawesome-report-generator": "^6.2.0",
     "unique-names-generator": "^4.7.1"
   }
 }
